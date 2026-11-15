@@ -1,17 +1,19 @@
+package com.practice.constructors;
+
 public class gymMembership{
     
     String memberName;
     String plan;
     int monthsRemaining;
     int totalFeePaid;
-    int renewals;
+    int renewals = 0;
 
     public gymMembership(String memberName, String plan){
         //memberName validation
         if(memberName == null || memberName.trim().isBlank()){
             throw new IllegalArgumentException("Invalide Member Name");
         }else{
-            this.memberName = memberName;
+            this.memberName = memberName.trim();
         }
 
         //plan validation
@@ -37,12 +39,40 @@ public class gymMembership{
 
 
     }
-}
 
-public class GymMembership{
-    public static void main(String[] args){
-        gymMembership m1 = new gymMembership("ADI", "MONTHLY");
-        System.out.println(m1.memberName);
-        System.out.println(m1.totalFeePaid);
+    public int renew(){
+        int charge = 0;
+        if("MONTHLY".equals(this.plan)){
+            charge = 1500*90/100;
+            this.monthsRemaining += 1;
+        }else if("QUARTERLY".equals(this.plan)){
+            charge = 4000* 90/100;
+            this.monthsRemaining += 3;
+        }else{
+            charge = 12000* 90/100;
+            this.monthsRemaining += 12;
+        }
+        this.totalFeePaid += charge;
+        this.renewals += 1;
+        return charge;
+
+    }
+
+    public boolean completeMonth(){
+        if(monthsRemaining > 0){
+            monthsRemaining -= 1;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean isActive(){
+        return monthsRemaining > 0;
+    }
+
+    public String describe(){
+        return memberName + " | " + plan +" | Months left: " + monthsRemaining +" | Paid rs. " + totalFeePaid + " | Renewals: " + renewals;
     }
 }
+
