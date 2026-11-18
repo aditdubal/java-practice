@@ -15,7 +15,7 @@ public class library{
 }
 
 
-public class libraryBook{
+class libraryBook{
     String title;
     String author;
     int availableCopies;
