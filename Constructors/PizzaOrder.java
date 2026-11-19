@@ -1,19 +1,20 @@
-public class PizzaOrder{
+public class PizzaOrder {
     String size;
     int toppings;
     boolean extraCheese;
 
-    public PizzaOrder(String size){
+    public PizzaOrder(String size) {
         this(size, 0, false);
     }
 
-    public PizzaOrder(String size, int toppings){
+    public PizzaOrder(String size, int toppings) {
         this(size, toppings, false);
     }
 
-    public PizzaOrder(String size, int toppings, boolean extraCheese){
+    public PizzaOrder(String size, int toppings, boolean extraCheese) {
         //validate size
-        if(size == null || "SMALL")
+        if (size == null) {
+        }
     }
 }
 
